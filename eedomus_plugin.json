@@ -1,0 +1,126 @@
+{
+	"plugin_id":"PurpleAir",
+	"name_fr": "PurpleAir",
+	"name_en": "PurpleAir",
+	"icon":"ospi.png",
+	"version":"1.0",
+	"creation_date":"2017-09-30",
+	"modification_date":"2017-09-30",
+	"author":"<a href='https://github.com/empierre/eedomus' target='_blank'>epierre <img src='/img/external.png'></a>",
+	"description_fr":"Capteur de pollution des paricules <a href='https://www.purpleair.com/' target='_blank'>PurpleAir</a>",
+	"description_en":"Particle pollution monitor with <a href='https://www.purpleair.com/' target='_blank'>PurpleAir</a>",
+	"description_es": "",
+	"description_it": "",
+	"description_de": "",
+	"forum_link": "http://forum.eedomus.com/viewtopic.php?f=16&t=5873",
+"parameters":
+[
+	{
+		"parameter": "IP", 
+		"description": "Adresse IP:Port PurpleAir<br><i>Ex. 192.168.0.21:80</i>",
+		"xtype": "textfield",
+		"default_value": "",
+		"field": "width:130, allowBlank:false"
+   }
+],
+"devices":
+	[
+	{
+	"device_id":"purpleairhumidity",
+	"module_id": "41",
+	"type":"http",
+	"name_fr":"PurpleAir - Humidité",
+	"name_en":"PurpleAir - Humidity",
+	"icon":"purpleair.png",
+	"utilisation_id": "2", 
+	"parameters":
+	{
+		"VAR1": "plugin.parameters.IP",
+		"value_type":"list",
+		"ignore_errors":3,
+		"RAW_URL":"http://[VAR1]/json",
+		"RAW_XPATH":"/root/current_humidity",
+		"POLLING":"10"
+	}
+	},
+	{
+	"device_id":"purpleairpressure",
+	"module_id": "41",
+	"parent_id": "purpleairhumidity",
+	"type":"http",
+	"name_fr":"PurpleAir - Pression",
+	"name_en":"PurpleAir - Pressure",
+	"icon":"purpleair.png",
+	"utilisation_id": "2", 
+	"parameters":
+	{
+		"VAR1": "plugin.parameters.IP",
+		"value_type":"list",
+		"ignore_errors":3,
+		"RAW_URL":"http://[VAR1]/json",
+		"RAW_XPATH":"/root/pressure",
+		"POLLING":"10"
+	}
+	},
+	{
+	"device_id":"purpleairpm1_0",
+	"module_id": "41",
+	"parent_id": "purpleairhumidity",
+	"type":"http",
+	"name_fr":"PurpleAir - PM 1.0",
+	"name_en":"PurpleAir - PM 1.0",
+	"icon":"purpleair.png",
+	"utilisation_id": "2", 
+	"parameters":
+	{
+		"VAR1": "plugin.parameters.IP",
+		"value_type":"list",
+		"ignore_errors":3,
+		"RAW_URL":"http://[VAR1]/json",
+		"RAW_XPATH":"/root/pm1_0_atm",
+		"POLLING":"10"
+	}
+	},
+	{
+	"device_id":"purpleairpm2_5",
+	"module_id": "41",
+	"parent_id": "purpleairhumidity",
+	"type":"http",
+	"name_fr":"PurpleAir - PM 2.5",
+	"name_en":"PurpleAir - PM 2.5",
+	"icon":"purpleair.png",
+	"utilisation_id": "2", 
+	"parameters":
+	{
+		"VAR1": "plugin.parameters.IP",
+		"value_type":"list",
+		"ignore_errors":3,
+		"RAW_URL":"http://[VAR1]/json",
+		"RAW_XPATH":"/root/pm2_5_atm",
+		"POLLING":"10"
+	}
+	},
+	{
+	"device_id":"purpleairpm10_0",
+	"module_id": "41",
+	"parent_id": "purpleairhumidity",
+	"type":"http",
+	"name_fr":"PurpleAir - PM 10",
+	"name_en":"PurpleAir - PM 10",
+	"icon":"purpleair.png",
+	"utilisation_id": "2", 
+	"parameters":
+	{
+		"VAR1": "plugin.parameters.IP",
+		"value_type":"list",
+		"ignore_errors":3,
+		"RAW_URL":"http://[VAR1]/json",
+		"RAW_XPATH":"/root/pm10_0_atm",
+		"POLLING":"10"
+	}
+	},
+
+
+
+	]
+}
