@@ -12,10 +12,12 @@ if ($type=="1") {
         $current_humidity       =  xpath($json_pa,'/root/current_humidity');
         $current_temp_f         =  xpath($json_pa,'/root/current_temp_f');
         $current_temp_c         =  round(($current_temp_f-32)*.5556);
-        
-        $xml = '<?xml version="1.0" encoding="UTF-8"?>';
+       
+  	$xml = '<?xml version="1.0" encoding="UTF-8"?>';
+        $xml .= '<purpleair>';
         $xml .= '<AQIShortTerm>'.sdk_aqiFromPM($pm2_5_atm).'</AQIShortTerm>';
         $xml .= '<AQIrank>'.sdk_getAQIrank($pm2_5_atm).'</AQIrank>';
+        $xml .= '</purpleair>'; 
         echo $xml;
 } else {
         echo "type 3";
